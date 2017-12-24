@@ -45,6 +45,12 @@ public class Gui extends JPanel implements AbstractGUI {
                     brick.getX() * Tools.getSize(),
                     brick.getY() * Tools.getSize(), this);
         }
+
+        for (Bridge bridge: level.getBridges()){
+            g.drawImage(bridge.picBridge,
+                    bridge.getX() * Tools.getSize(),
+                    bridge.getY() * Tools.getSize(), this);
+        }
     }
 
     public void paintSnake(Graphics g, Snake snake){
