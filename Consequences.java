@@ -9,13 +9,15 @@ public class Consequences {
     private Food food;
     private Tools tools;
     private Level currentLevel;
+    private Game game;
 
-    Consequences(Snake snake, Food food, Tools tools, Level level)
+    Consequences(Snake snake, Food food, Tools tools, Level level, Game game)
     {
         this.snake = snake;
         this.food = food;
         this.tools = tools;
         this.currentLevel = level;
+        this.game = game;
     }
 
     public void recountConsequences()
@@ -109,11 +111,28 @@ public class Consequences {
     }
 
     public void performJump() {
-        int bridgeIndex = currentLevel.indexInBridges(snake.getSnakeHead());
-        if (bridgeIndex != -1) {
-            Level newLevel = currentLevel.getBridge(bridgeIndex).Map(currentLevel);
-            currentLevel = newLevel != null ? newLevel : currentLevel;
+        Bridge bridge = currentLevel.getBridge(0);
+        if (snake.getSnakeHead().getX() == bridge.getX() &
+                snake.getSnakeHead().getY() == bridge.getY()){
+            if (currentLevel == bridge.top){
+                if (bridge.top != null)
+                    currentLevel = bridge.bottom;
+                    game.setLevel(bridge.bottom);
+            }
+            else {
+                if (bridge.bottom != null)
+                    currentLevel = bridge.top;
+                    game.setLevel(bridge.top);
+            }
+            food.generateAllFood();
         }
+//        int bridgeIndex = currentLevel.indexInBridges(snake.getSnakeHead());
+//        if (bridgeIndex != -1) {
+//            Level newLevel = currentLevel.getBridge(bridgeIndex).Map(currentLevel);
+//            currentLevel = newLevel != null ? newLevel : currentLevel;
+//        }
+
+
     }
 
     public void eat()

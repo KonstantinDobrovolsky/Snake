@@ -33,6 +33,10 @@ public class Game implements KeyListener {
 
     public Level getLevel() {return level; }
 
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
     public void setTools(Tools tool) {
         tools = tool;
     }
@@ -66,7 +70,7 @@ public class Game implements KeyListener {
         tools = new Tools();
 
         level = new Levels().getFirstLevel();
-        cons = new Consequences(MySnake, SnakeFood, tools, level);
+        cons = new Consequences(MySnake, SnakeFood, tools, level, this);
     }
 
     private void makeMove(ActionEvent evt) {
