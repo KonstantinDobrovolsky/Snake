@@ -9,6 +9,10 @@ public class Level {
         return bricks;
     }
 
+    public void setBridges(ArrayList<Bridge> newBridges){
+        bridges = newBridges;
+    }
+
     public int indexInBridges(Rectangle point) {
         //noinspection SuspiciousMethodCalls
         return bridges.indexOf(point);
@@ -21,6 +25,10 @@ public class Level {
 
     public Bridge getBridge(int index) {
         return bridges.get(index);
+    }
+
+    public ArrayList<Bridge> getBridges() {
+        return bridges;
     }
 
     public Level() {

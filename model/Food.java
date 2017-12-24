@@ -81,6 +81,11 @@ public class Food {
             AlcoholicFood = generateFood();
         }
     }
+
+    public void  generateDeadlyFood()
+    {
+
+    }
     public void generateAllFood()
     {
         NotAlcoholicFood = generateFood();

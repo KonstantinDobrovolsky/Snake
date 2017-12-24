@@ -1,11 +1,13 @@
 package com.snake.model;
 
 import com.sun.istack.internal.Nullable;
+
+import javax.swing.*;
 import java.awt.*;
 
 public class Bridge extends Rectangle {
-    public static Image image;
-    private Level top, bottom;
+    public Image picBridge;
+    public Level top, bottom;
 
     public Bridge(Level top, Level bottom)
     {
@@ -14,6 +16,8 @@ public class Bridge extends Rectangle {
 
         this.top = top;
         this.bottom = bottom;
+
+        loadImages();
     }
 
     public Bridge(int x, int y, Level top, Level bottom)
@@ -23,6 +27,8 @@ public class Bridge extends Rectangle {
 
         this.top = top;
         this.bottom = bottom;
+
+        loadImages();
     }
 
     @Nullable
@@ -32,5 +38,10 @@ public class Bridge extends Rectangle {
         if (current == bottom)
             return top;
         return null;
+    }
+
+    private void loadImages(){
+        ImageIcon na = new ImageIcon("pic\\bridge.png");
+        picBridge = na.getImage();
     }
 }
